@@ -21,8 +21,7 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-
-local xrandr = require("xrandr")
+local volumearc_widget = require("awesome-wm-widgets.volumearc-widget.volumearc")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -229,8 +228,9 @@ awful.screen.connect_for_each_screen(function(s)
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+	    layout = wibox.layout.fixed.horizontal,
+	    volumearc_widget(),
+            -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
